@@ -1,0 +1,48 @@
+para intalar un proyecyo de laravel con version 7.24
+	composer create-project --prefer-dist laravel/laravel:^7.30 nombreproyecto
+
+Para compilar nuestro css y nuestro js en uno solo
+	npm run dev
+
+Para compilar el kernel, para cuando se pone helpers
+	composer dump-autoload
+
+producto
+orden
+
+
+
+8502Rmonier.
+
+ya esta intalado:
+	paquete QR
+	paquete datatables-ajax
+	paquete DomPDF
+
+ /*
+		@elseif ( $chip->folio->costo > 0 && $chip->almacene_id != 1)
+                	{{ $chip->folio->costo }}
+               	@elseif ( $chip->folio->costo != 0 && $chip->almacene_id != 1)
+                	{{ $chip->folio->costo/$chip->folio->cantidad }} 
+*/
+
+
+for install proyect the laravel am vers
+
+bio
+te: 15,731.96
+
+
+niveles de acceso
+103 -- Super amdin
+102 -- Administradores
+101 -- vendedores o moderador
+100 -- Usuer normales
+
+
+I have red ....
+you have red 
+he have red
+she has red 
+we have red 
+they have red 
