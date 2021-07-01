@@ -7,11 +7,6 @@ Para compilar nuestro css y nuestro js en uno solo
 Para compilar el kernel, para cuando se pone helpers
 	composer dump-autoload
 
-producto
-orden
-
-
-
 8502Rmonier.
 
 ya esta intalado:
@@ -19,25 +14,19 @@ ya esta intalado:
 	paquete datatables-ajax
 	paquete DomPDF
 
- /*
-		@elseif ( $chip->folio->costo > 0 && $chip->almacene_id != 1)
-                	{{ $chip->folio->costo }}
-               	@elseif ( $chip->folio->costo != 0 && $chip->almacene_id != 1)
-                	{{ $chip->folio->costo/$chip->folio->cantidad }} 
-*/
-
-
 for install proyect the laravel am vers
-
-bio
-te: 15,731.96
-
 
 niveles de acceso
 103 -- Super amdin
 102 -- Administradores
 101 -- vendedores o moderador
 100 -- Usuer normales
+
+GIT
+- git status = te dice todos los archivo que se cambiaron
+- git add * = sube todos los archivos modificados al local de git
+- git commit -m "mensage descriccion" = es para teneer el historial de lo que hiciste y saber
+- git push origin master = se suben los archivos modificados a git
 
 
 I have red ....
@@ -46,10 +35,3 @@ he have red
 she has red 
 we have red 
 they have red 
-
-
-GIT
-- git status = te dice todos los archivo que se cambiaron
-- git add * = sube todos los archivos modificados al local de git
-- git commit -m "mensage descriccion" = es para teneer el historial de lo que hiciste y saber
-- git push origin master = se suben los archivos modificados a git
