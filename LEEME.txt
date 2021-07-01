@@ -46,3 +46,10 @@ he have red
 she has red 
 we have red 
 they have red 
+
+
+GIT
+- git status = te dice todos los archivo que se cambiaron
+- git add * = sube todos los archivos modificados al local de git
+- git commit -m "mensage descriccion" = es para teneer el historial de lo que hiciste y saber
+- git push origin master = se suben los archivos modificados a git
