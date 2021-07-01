@@ -4,7 +4,7 @@
 <head>
     <meta charset="gb18030">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} | Dashboard</title>
+    <title>{{ config('app.name') }} | Dashboard  Hola esto es una Prueba</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
