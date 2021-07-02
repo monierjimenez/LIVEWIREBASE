@@ -25,7 +25,7 @@ niveles de acceso
 GIT
 - git status = te dice todos los archivo que se cambiaron
 - git add * = sube todos los archivos modificados al local de git
-- git commit -m "mensage descriccion" = es para teneer el historial de lo que hiciste y saber
+- git commit -m "mensage descriccion" = es para tener el historial de lo que hiciste y saber
 - git push origin master = se suben los archivos modificados a git
 
 
