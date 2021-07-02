@@ -18,6 +18,9 @@ ya esta intalado:
 	paquete QR
 	paquete datatables-ajax
 	paquete DomPDF
+	
+install paquet for default
+	guzzlehttp/guzzle  este paquete es para consumir api.
 
  /*
 		@elseif ( $chip->folio->costo > 0 && $chip->almacene_id != 1)
