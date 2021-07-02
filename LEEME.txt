@@ -14,9 +14,12 @@ ya esta intalado:
 	paquete datatables-ajax
 	paquete DomPDF
 
+<<<<<<< HEAD
 Pquetes intalados por fdefault
 	guzzlehttp/guzzle   es para consumir de api
 
+=======
+>>>>>>> a4b4405157293c7f5e966eae7fb31f23fa0a7469
 for install proyect the laravel am vers
 
 niveles de acceso
