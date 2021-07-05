@@ -9,3 +9,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'middleware' => 'auth
     //USER
     Route::resource('users', 'UsersController', ['as' => 'admin']);
 });
+
