@@ -1,8 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
-//rutas de administracion
+//ROUTE THE ADMINISTRATOR
+
     // para acceder a la administracion
     Route::get('/', 'AdminController@index')->name('admin');
     //USER
