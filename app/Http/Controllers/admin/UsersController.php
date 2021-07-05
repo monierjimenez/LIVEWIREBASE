@@ -20,9 +20,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        if ( !in_array('PUV', explode(".", auth()->user()->permissions)) ) 
+        if ( !in_array('PUV', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
-        
+
         //return back()->with('flasherror', 'Permissions denied.');
 
         $users = User::all();
@@ -36,7 +36,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        if ( !in_array('PUE', explode(".", auth()->user()->permissions)) ) 
+        if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
         return view('admin.users.create');
     }
@@ -52,10 +52,10 @@ class UsersController extends Controller
         //return $request;
         $user = (new User)->fill($request->all());
         //$user = User::create($request->all());
-        
+
         if( $request->hasFile('avatar') )
             $user->avatar = $request->file('avatar')->store('avatar');
-            
+
         $user->save();
         return redirect()->route('admin.users.index')->with('flash', 'User has been created successfully.');
     }
@@ -69,7 +69,7 @@ class UsersController extends Controller
     public function show(User $user)
     {
         //$foto = $user->photos;
-        if ( !in_array('PUV', explode(".", auth()->user()->permissions)) ) 
+        if ( !in_array('PUV', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
 
         return view('admin.users.show', compact('user'));
@@ -84,7 +84,7 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         //return auth()->user()->permissions;
-        if ( !in_array('PUE', explode(".", auth()->user()->permissions)) ) 
+        if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
 
         return view('admin.users.edit', compact('user'));
@@ -98,14 +98,14 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    { 
-        $rules = [ 
+    {
+        $rules = [
             'name' => 'required',
             'email' => ['required', Rule::unique('users')->ignore($user->id)],
             'phone' => 'required|numeric',
             'role' => 'required',
         ];
-        
+
         $user->permissions = updaterights($request->permissions);
         $user->save();
 
@@ -120,8 +120,8 @@ class UsersController extends Controller
 				unlink(public_path().'/images/'.$user->avatar);
 			}
 			$file = $request->file('avatar');
-		 
-			$nombrearchivo  = time().'-'.$file->getClientOriginalName();			
+
+			$nombrearchivo  = time().'-'.$file->getClientOriginalName();
             $file->move(public_path().'/images/avatar', $nombrearchivo);
             $user->avatar = 'avatar/'.$nombrearchivo;
             $user->save();
@@ -130,7 +130,7 @@ class UsersController extends Controller
 
         $user->update($data) ;
         $user->password = bcrypt($request->password);
-   
+
         return back()->with('flash', 'Updated User.');
     }
 
