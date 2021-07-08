@@ -1,6 +1,9 @@
 para intalar un proyecyo de laravel con version 7.24
 	composer create-project --prefer-dist laravel/laravel:^7.30 nombreproyecto
 
+para importar una BD grande a phpmyadmin, mediante la consola de windox
+	mysql -h localhost -u USER -pPASS --default-character-set=utf8 nameBD<direccion donde se encuentra 
+
 Para compilar nuestro css y nuestro js en uno solo
 	npm run dev
 

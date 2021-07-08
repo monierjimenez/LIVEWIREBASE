@@ -18,7 +18,7 @@ class AdminController extends Controller
             // $ultimascompras = Articulo::orderBy('updated_at', 'desc')->limit(5)->get();
             // $caja = Caja::find(1);
             // $ultimosequipoasociadosalls = Equiposasociado::all();
-            return view('admin.dashboard',);
+            return view('admin.dashboard');
         }
         else{
             return redirect()->route('home');

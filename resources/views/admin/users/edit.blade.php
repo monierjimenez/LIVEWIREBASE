@@ -5,7 +5,7 @@
 	@if( !checkrights('PUE', auth()->user()->permissions) )
 		<script type="text/javascript">
 			window.location="/admin/users";
-		</script>									 
+		</script>
 	@endif
 
 	<section class="content-header">
@@ -36,53 +36,53 @@
 						<input type='password' name='password' id="password" class="form-control">
 						{!! $errors->first('password', '<span class="help-block">:message</span>') !!}
 		    		</div>
-				
+
 		    		<div class="form-group {{ $errors->has('password_confirmed') ? 'has-error' : '' }}">
 		    			<label for="password_confirmed">Repeat Password</label>
 						<input type='password' name='password_confirmation' id="password_confirmation" class="form-control">
 						{!! $errors->first('password_confirmed', '<span class="help-block">:message</span>') !!}
 		    		</div>
-				
+
 	    			<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
 	    				<label>Phone</label>
 	    				<input name='phone' maxlength="10" placeholder="User's Phone" class="form-control" value="{{ old('phone', $user->phone) }}">
 	    				{!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
 	    			</div>
 				</div>
-				
+
 	    	</div>
    		</div>
 
 
     	<div class="col-md-3">
-    		<div class="box box-primary">			
+    		<div class="box box-primary">
 				<div class="box-body">
 					<div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
 						<label>Role</label>
 						<select name='role' class="form-control">
-							@if ( auth()->user()->role == 103 )	
+							@if ( auth()->user()->role == 103 )
 								<option value="">Select a role</option>
 								<option value="103" {{ $user->role == 103  ? 'selected' : ''}}>Super-administrator</option>
 								<option value="102" {{ $user->role == 102 ? 'selected' : ''}}>Administrator</option>
 								<option value="101" {{ $user->role == 101? 'selected' : ''}}>Seller or Moderator</option>
 								<option value="100" {{ $user->role == 100 ? 'selected' : ''}}>Users</option>
 							@else
-								@if ( $user->role == 102 ) 
-								<option value="102" {{ $user->role == 102 ? 'selected' : ''}}>Administrator</option> 
-								@elseif( $user->role == 101 ) 
+								@if ( $user->role == 102 )
+								<option value="102" {{ $user->role == 102 ? 'selected' : ''}}>Administrator</option>
+								@elseif( $user->role == 101 )
 								<option value="101" {{ $user->role == 101? 'selected' : ''}}>Seller or Moderator</option>
-								@elseif( $user->role == 100 ) <option value="100" {{ $user->role == 100 ? 'selected' : ''}}>Users</option> @endif								
+								@elseif( $user->role == 100 ) <option value="100" {{ $user->role == 100 ? 'selected' : ''}}>Users</option> @endif
 							@endif
 						</select>
 						{!! $errors->first('role', '<span class="help-block">:message</span>') !!}
-					</div>	  
+					</div>
 
 					<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 						<label>E-mail</label>
 						<input name='email' placeholder="E-mail del usuario" class="form-control" value="{{ old('email', $user->email) }}">
 						{!! $errors->first('email', '<span class="help-block">:message</span>') !!}
-					</div>  			
-				
+					</div>
+
 	    			<div class="form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
 						<label>Avatar</label><br>
 
@@ -95,7 +95,7 @@
 						<input type="file" name="avatar" id="avatar">
 	    				{!! $errors->first('avatar', '<span class="help-block">:message</span>') !!}
 	    			</div>
-				</div>				
+				</div>
     		</div>
     	</div>
 
@@ -111,29 +111,29 @@
 								</div>
 
 								<div class="box-body">
-									<p> 
-										{!! checkrights('PUV', $user->permissions) ? 
+									<p>
+										{!! checkrights('PUV', $user->permissions) ?
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" checked> '
-											 : 
+											 :
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" > ' !!}View User<br>
-{{--  
-										<input type="checkbox" name="permissionsuser[]" class="minimal flat-red" value="PUV" checked> 
+{{--
+										<input type="checkbox" name="permissionsuser[]" class="minimal flat-red" value="PUV" checked>
 										View User<br>  --}}
-										
-										{!! checkrights('PUE', $user->permissions) ? 
+
+										{!! checkrights('PUE', $user->permissions) ?
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" checked> '
-											 : 
+											 :
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" > ' !!}Edit User<br>
-										
-										{!! checkrights('PUD', $user->permissions) ? 
+
+										{!! checkrights('PUD', $user->permissions) ?
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" checked> '
-											 : 
+											 :
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" > ' !!}Delete User
 									</p>
-								
+
 									{{--  <input type="checkbox" name="encargado" class="minimal flat-red" disabled value="1" checked>
 									&nbsp;<i class="fa fa-street-view margin-r-5"></i>View User &nbsp;<br>  --}}
-								
+
 								</div>
 						  	</div>
 						</div>
@@ -145,10 +145,10 @@
 								</div>
 
 								<div class="box-body">
-									<p> 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked> 
+									<p>
+										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
 										View User<br>
-										
+
 										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
 										Edit User<br>
 
@@ -166,10 +166,10 @@
 								</div>
 
 								<div class="box-body">
-									<p> 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked> 
+									<p>
+										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
 										View User<br>
-										
+
 										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
 										Edit User<br>
 
@@ -181,7 +181,7 @@
 						</div>
 					</div>
 				</p>
-			
+
 
 				{{--  @if ( auth()->user()->role == 103 || auth()->user()->role == 102 )  --}}
 					<div class="box-body">
@@ -207,7 +207,18 @@
 	<!-- CK Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 
+    @if( session()->has('flash') )
+        <script>
+            toastr.success("User updated successfully");
+        </script>
+    @elseif( count($errors) != 0 )
+        <script>
+            toastr.error("An error has occurred, check the delivered data");
+        </script>
+    @endif
+
 	<script>
+
 		CKEDITOR.replace('extracto');
 
 		//iCheck for checkbox and radio inputs

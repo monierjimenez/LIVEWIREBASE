@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Artisan;
+
 class UsersController extends Controller
 {
     /**
@@ -87,7 +89,7 @@ class UsersController extends Controller
         if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'))->with('editado', 'Edit Users.');
     }
 
     /**
@@ -108,7 +110,7 @@ class UsersController extends Controller
 
         $user->permissions = updaterights($request->permissions);
         $user->save();
-
+        //Artisan::call('cache:clear');
         if( $request->filled('password'))
         {
             $rules['password'] = ['confirmed', 'min:5'];

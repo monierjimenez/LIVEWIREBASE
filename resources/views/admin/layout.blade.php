@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="stylesheet" href="/adminlte/plugins/pace/pace.min.css">
+    <!-- Css para los mensages de notificaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     @stack('styles')
-    
+
     <!-- Theme style -->
     <link rel="stylesheet" href="/adminlte/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/adminlte/css/skins/skin-blue.min.css">
@@ -27,6 +29,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+    @livewireStyles
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -250,7 +253,7 @@ desired effect
         -->
 
 
-        <!-- 
+        <!--
         ---------------------------
         -->
         <aside class="main-sidebar">
@@ -276,7 +279,7 @@ desired effect
                     </div>
                 </div>
 
-                <!-- search form (Optional) 
+                <!-- search form (Optional)
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Buscar...">
@@ -292,25 +295,25 @@ desired effect
                 <!-- Sidebar Menu -->
 
                 @include('admin.partials.nav')
-                
+
             </section>
         </aside>
 
-        <!-- 
+        <!--
             ---------------------------
         -->
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('header')
-            <section class="content">        
+            <section class="content">
                 @if( session()->has('flash') )
                     <div class="alert alert-success">{{ session('flash') }}</div>
                 @endif
                 @if( session()->has('flasherror') )
                     <div class="alert alert-danger">{{ session('flasherror') }}</div>
                 @endif
-            
-                @yield('content')        
+
+                @yield('content')
             </section>
           </div>
 
@@ -324,8 +327,8 @@ desired effect
             <strong>
                 Copyright &copy; {{ date('Y') }} <a href="#">Dashboard</a>.
             </strong> All rights reserved
-            
-            <!-- Default icon social 
+
+            <!-- Default icon social
             <span style="padding-left:20px"><a class="btn btn-social-icon btn-facebook btn-sm"><i class="fa fa-facebook"></i></a></span>
             <span style="padding-left:20px"><a class="btn btn-social-icon btn-github btn-sm"><i class="fa fa-github"></i></a></span>
             <span style="padding-left:20px"><a class="btn btn-social-icon btn-dropbox btn-sm"><i class="fa fa-dropbox"></i></a></span>
@@ -419,9 +422,31 @@ desired effect
 
     <script src="/adminlte/plugins/pace/pace.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
     @stack('script')
     <!-- AdminLTE App -->
     <script src="/adminlte/js/app.min.js"></script>
+
+    @livewireScripts
 </body>
 
 </html>

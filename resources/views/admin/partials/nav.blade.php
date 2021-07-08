@@ -39,7 +39,7 @@
           <li><a href="#">Meus Ratings</a></li>
       </ul>
   </li>
-  
+
   {{--  <li>
       <a href="#"><i class="fa fa-close"></i> <span>SAIR</span></a>
   </li>  --}}

@@ -15,12 +15,12 @@
     <div class="box-header">
       <h3 class="box-title">List the users</h3>
       @if( checkrights('PUE', auth()->user()->permissions) )
-        <a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right"> 
+        <a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">
           <i class="fa fa-plus"></i> Create User
         </a>
       @endif
     </div>
-    
+
     <!-- /.box-header -->
     <div class="box-body">
       <table id="post-table" class="table table-bordered table-hover">
@@ -38,7 +38,7 @@
 
         <tbody>
           @php $i = 1; @endphp
-          @foreach ($users as $user)            
+          @foreach ($users as $user)
             <tr>
               <td>{{ $i }}</td>
               <td> {{ $user->name }} </td>
@@ -64,14 +64,14 @@
               </td>
               <td>
                 @if( checkrights('PUV', auth()->user()->permissions) )
-										<a href="{{ route('admin.users.show', $user) }}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>									 
+										<a href="{{ route('admin.users.show', $user) }}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
                 @endif
-                
+
                 @if( checkrights('PUE', auth()->user()->permissions) )
                 <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
                 @endif
-                
-                
+
+
                 @if ( auth()->user()->level == 103 && $user->id != 1 )
                   <form method="POST" action="{{ route('admin.users.destroy', $user) }}" style="display: inline">
                     @csrf {{ method_field('DELETE') }}
@@ -95,26 +95,24 @@
     <link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
 @endpush
 
-@push('script') 
-  <!-- DataTables -->
-  <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+@push('script')
+      <!-- DataTables -->
+    <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-  <script>
-  $(function () {
-   /* $("#example1").DataTable();*/
+    <script>
+      $(function () {
+       /* $("#example1").DataTable();*/
 
-    $('#post-table').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
-
-
+        $('#post-table').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
 @endpush
 
