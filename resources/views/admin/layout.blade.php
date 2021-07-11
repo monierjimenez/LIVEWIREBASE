@@ -306,12 +306,12 @@ desired effect
         <div class="content-wrapper">
             @yield('header')
             <section class="content">
-                @if( session()->has('flash') )
-                    <div class="alert alert-success">{{ session('flash') }}</div>
-                @endif
-                @if( session()->has('flasherror') )
-                    <div class="alert alert-danger">{{ session('flasherror') }}</div>
-                @endif
+{{--                @if( session()->has('flash') )--}}
+{{--                    <div class="alert alert-success">{{ session('flash') }}</div>--}}
+{{--                @endif--}}
+{{--                @if( session()->has('flasherror') )--}}
+{{--                    <div class="alert alert-danger">{{ session('flasherror') }}</div>--}}
+{{--                @endif--}}
 
                 @yield('content')
             </section>
@@ -445,7 +445,32 @@ desired effect
     @stack('script')
     <!-- AdminLTE App -->
     <script src="/adminlte/js/app.min.js"></script>
+        @if( session()->has('flash') )
+            <script>
+                toastr.success("{{session()->get('flash')}}");
+            </script>
+        @elseif( session()->has('flasherror') )
+            <script>
+                toastr.error("{{session()->get('flasherror')}}");
+            </script>
+        @elseif( count($errors) != 0 )
+            <script>
+                toastr.error("An error has occurred, check the delivered data");
+            </script>
+        @endif
 
+
+
+
+{{--    @if( session()->has('flash') )--}}
+{{--        <script>--}}
+{{--            toastr.success("{{session()->get('flash')}}");--}}
+{{--        </script>--}}
+{{--    @elseif( count($errors) != 0 )--}}
+{{--        <script>--}}
+{{--            toastr.error("An error has occurred, check the delivered data");--}}
+{{--        </script>--}}
+{{--    @endif--}}
     @livewireScripts
 </body>
 

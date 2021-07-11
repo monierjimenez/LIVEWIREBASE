@@ -61,7 +61,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    @if ( auth()->user()->role == 103 || auth()->user()->role == 102 || auth()->user()->role == 101 )
+                                    @if ( auth()->user()->permissions != '' )
                                         <a class="dropdown-item" href="{{ route('admin') }}">
                                             Administration
                                         </a>

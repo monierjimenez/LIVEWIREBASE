@@ -13,7 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if ( auth()->user()->role == 103 || auth()->user()->role == 102 || auth()->user()->role == 101 ){
+        if ( auth()->user()->permissions != '' ){
             // $ultimosequipoasociados = Equiposasociado::where("vendido","=",1)->orderBy('updated_at', 'desc')->limit(7)->get();
             // $ultimascompras = Articulo::orderBy('updated_at', 'desc')->limit(5)->get();
             // $caja = Caja::find(1);

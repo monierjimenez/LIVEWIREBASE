@@ -4,7 +4,7 @@ use App\User;
 
 // use SimpleSoftwareIO\QrCode\Facade as QrCode;
 
-    // funcion para chequear si el un usuario tiene 
+    // funcion para chequear si el un usuario tiene
     // permisos para acceder a determinado lugar.
     function checkrights($permissions, $allpermissions) {
         if ( in_array($permissions, explode(".", $allpermissions)) ) {
@@ -13,21 +13,29 @@ use App\User;
             return false;
         }
     }
-    
+//me devuelve la cantidad de permisos que tiene el rol.
+function checkrightscant($allpermissions) {
+        $a = 0 ;
+    if ( $allpermissions != null)
+        foreach(explode('.', $allpermissions) as $info)
+            $a=$a+1;
+    return $a;
+}
+
     // funcion para actualizar permisos para acceder a determinado lugar.
     function updaterights($allpermissions) {
         $pp = null;
         if( $allpermissions != '' )
-        {            
+        {
             $cantidad = count($allpermissions);
             $oo = 1 ;
             foreach ($allpermissions as $key) {
                 if( $cantidad > $oo )
                     $pp = $key.'.'.$pp;
-                else 
+                else
                     $pp = $pp.$key;
                 $oo++;
-            }                    
+            }
         }
         return $pp ;
     }
@@ -57,4 +65,3 @@ use App\User;
     //     ]);
     // }
 
-    

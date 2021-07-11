@@ -43,16 +43,8 @@
               <td>{{ $i }}</td>
               <td> {{ $user->name }} </td>
               <td>{{ $user->email }}</td>
-              <td>{{ $user->name }}</td>
-              @if ( $user->role === 103 )
-              <td style="text-align: center">Super-Administrator</td>
-              @elseif( $user->role === 102 )
-              <td style="text-align: center">Administrator</td>
-              @elseif( $user->role === 101 )
-              <td style="text-align: center">Seller or Moderator</td>
-              @elseif( $user->role === 100 )
-              <td style="text-align: center">User</td>
-              @endif
+              <td>{{ $user->phone }}</td>
+              <td style="text-align: center">{{ $user->rol->name }}</td>
               <td>
                 <div class="user-block">
                     @if ( $user->avatar != null )

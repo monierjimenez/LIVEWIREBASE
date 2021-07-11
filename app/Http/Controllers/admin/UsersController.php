@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\User;
+use App\Role;
 
 use Illuminate\Validation\Rule;
 use App\Http\Requests\StoreUserRequest;
@@ -23,10 +24,9 @@ class UsersController extends Controller
     public function index()
     {
         if ( !in_array('PUV', explode(".", auth()->user()->permissions)) )
-            return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
+            return redirect()->route('admin')->with('flasherror', 'Permissions denied to perform this operation, contact the administrator.');
 
         //return back()->with('flasherror', 'Permissions denied.');
-
         $users = User::all();
     	return view('admin.users.index', compact('users'));
     }
@@ -39,8 +39,10 @@ class UsersController extends Controller
     public function create()
     {
         if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
-            return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
-        return view('admin.users.create');
+            return redirect()->route('admin')->with('flasherror', 'Permissions denied to perform this operation, contact the administrator.');
+
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -51,13 +53,13 @@ class UsersController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //return $request;
+        $rol = Role::find($request->role) ;
         $user = (new User)->fill($request->all());
         //$user = User::create($request->all());
-
         if( $request->hasFile('avatar') )
             $user->avatar = $request->file('avatar')->store('avatar');
 
+        $user->permissions = $rol->permissions ;
         $user->save();
         return redirect()->route('admin.users.index')->with('flash', 'User has been created successfully.');
     }
@@ -72,7 +74,7 @@ class UsersController extends Controller
     {
         //$foto = $user->photos;
         if ( !in_array('PUV', explode(".", auth()->user()->permissions)) )
-            return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
+            return redirect()->route('admin')->with('flasherror', 'Permissions denied to perform this operation, contact the administrator.');
 
         return view('admin.users.show', compact('user'));
     }
@@ -87,9 +89,10 @@ class UsersController extends Controller
     {
         //return auth()->user()->permissions;
         if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
-            return redirect()->route('admin')->with('flasherror', 'Permissions denied.');
+            return redirect()->route('admin')->with('flasherror', 'Permissions denied to perform this operation, contact the administrator.');
 
-        return view('admin.users.edit', compact('user'))->with('editado', 'Edit Users.');
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -107,8 +110,13 @@ class UsersController extends Controller
             'phone' => 'required|numeric',
             'role' => 'required',
         ];
-
-        $user->permissions = updaterights($request->permissions);
+        $data = $request->validate($rules);
+        if ( $request->role != $user->role ) {
+            $rol = Role::find($request->role);
+            $user->permissions = $rol->permissions;
+        }else {
+            $user->permissions = updaterights($request->permissions);
+        }
         $user->save();
         //Artisan::call('cache:clear');
         if( $request->filled('password'))
@@ -128,12 +136,10 @@ class UsersController extends Controller
             $user->avatar = 'avatar/'.$nombrearchivo;
             $user->save();
 		 }
-        $data = $request->validate($rules);
 
         $user->update($data) ;
         $user->password = bcrypt($request->password);
-
-        return back()->with('flash', 'Updated User.');
+        return back()->with('flash', 'User has been updated successfully.');
     }
 
     /**

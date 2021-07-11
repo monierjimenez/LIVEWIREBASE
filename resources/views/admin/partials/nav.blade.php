@@ -14,10 +14,22 @@
   </li>
 
   @if( checkrights('PUV', auth()->user()->permissions) )
-    <li class="treeview {{ request()->is('admin/users*') ? 'active' : '' }}">
-        <a href="{{ route('admin.users.index') }}">
-            <i class="fa fa-user"></i> <span>USERS</span>
+    <li class="treeview {{ request()->is('admin/users*') ? 'active' : '' }} {{ request()->is('admin/roles*') ? 'active' : '' }}">
+        <a href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i> <span>USERS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+            <li class="{{ request()->is('admin/users') ? 'active' : '' }}"> <a href="{{ route('admin.users.index') }}">List Users</a></li>
+            @if( checkrights('PRV', auth()->user()->permissions) )
+                <li class="{{ request()->is('admin/roles') ? 'active' : '' }}"><a href="{{ route('admin.roles.index') }}">List Roles</a></li>
+            @endif
+{{--            <div class="container">--}}
+{{--                <!----> <button type="button" class="btn btn-default btn-sm">Cadastrar Monitorias</button>--}}
+{{--            </div>--}}
+            <!--Teste modal-->
+        </ul>
     </li>
   @endif
 

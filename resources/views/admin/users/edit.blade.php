@@ -60,19 +60,10 @@
 					<div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
 						<label>Role</label>
 						<select name='role' class="form-control">
-							@if ( auth()->user()->role == 103 )
-								<option value="">Select a role</option>
-								<option value="103" {{ $user->role == 103  ? 'selected' : ''}}>Super-administrator</option>
-								<option value="102" {{ $user->role == 102 ? 'selected' : ''}}>Administrator</option>
-								<option value="101" {{ $user->role == 101? 'selected' : ''}}>Seller or Moderator</option>
-								<option value="100" {{ $user->role == 100 ? 'selected' : ''}}>Users</option>
-							@else
-								@if ( $user->role == 102 )
-								<option value="102" {{ $user->role == 102 ? 'selected' : ''}}>Administrator</option>
-								@elseif( $user->role == 101 )
-								<option value="101" {{ $user->role == 101? 'selected' : ''}}>Seller or Moderator</option>
-								@elseif( $user->role == 100 ) <option value="100" {{ $user->role == 100 ? 'selected' : ''}}>Users</option> @endif
-							@endif
+                            <option value="">Select a role</option>
+                            @foreach($roles as $role)
+                                <option value="{{$role->id}}" {{ $user->role == $role->id  ? 'selected' : ''}}>{{$role->name}}</option>
+                            @endforeach
 						</select>
 						{!! $errors->first('role', '<span class="help-block">:message</span>') !!}
 					</div>
@@ -107,7 +98,7 @@
 						<div class="col-md-4">
 						  	<div class="box box-solid">
 								<div class="box-header with-border">
-									<h3 class="box-title">List Users</h3>
+									Permissions Users
 								</div>
 
 								<div class="box-body">
@@ -116,9 +107,6 @@
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" checked> '
 											 :
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" > ' !!}View User<br>
-{{--
-										<input type="checkbox" name="permissionsuser[]" class="minimal flat-red" value="PUV" checked>
-										View User<br>  --}}
 
 										{!! checkrights('PUE', $user->permissions) ?
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" checked> '
@@ -130,10 +118,6 @@
 											 :
 										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" > ' !!}Delete User
 									</p>
-
-									{{--  <input type="checkbox" name="encargado" class="minimal flat-red" disabled value="1" checked>
-									&nbsp;<i class="fa fa-street-view margin-r-5"></i>View User &nbsp;<br>  --}}
-
 								</div>
 						  	</div>
 						</div>
@@ -141,19 +125,25 @@
 						<div class="col-md-4">
 							<div class="box box-solid">
 								<div class="box-header with-border">
-									<h3 class="box-title">List Users</h3>
+                                    Permissions Roles
 								</div>
 
 								<div class="box-body">
 									<p>
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
-										View User<br>
+                                        {!! checkrights('PRV', $user->permissions) ?
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" checked> '
+											 :
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" > ' !!}View Role<br>
 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
-										Edit User<br>
+                                        {!! checkrights('PRE', $user->permissions) ?
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" checked> '
+											 :
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" > ' !!}Edit Role<br>
 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
-										Delete User
+                                        {!! checkrights('PRD', $user->permissions) ?
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" checked> '
+											 :
+										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" > ' !!}Delete Role
 									</p>
 								</div>
 							</div>
@@ -167,13 +157,13 @@
 
 								<div class="box-body">
 									<p>
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
+										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
 										View User<br>
 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
+										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
 										Edit User<br>
 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" checked>
+										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
 										Delete User
 									</p>
 								</div>
@@ -207,20 +197,8 @@
 	<!-- CK Editor -->
 	<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 
-    @if( session()->has('flash') )
-        <script>
-            toastr.success("User updated successfully");
-        </script>
-    @elseif( count($errors) != 0 )
-        <script>
-            toastr.error("An error has occurred, check the delivered data");
-        </script>
-    @endif
-
 	<script>
-
 		CKEDITOR.replace('extracto');
-
 		//iCheck for checkbox and radio inputs
 		$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
 			checkboxClass: 'icheckbox_minimal-blue',

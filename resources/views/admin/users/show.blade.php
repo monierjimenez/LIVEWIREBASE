@@ -5,7 +5,7 @@
 	@if( !checkrights('PUV', auth()->user()->permissions) )
 		<script type="text/javascript">
 			window.location="/admin/users";
-	  	</script>									 
+	  	</script>
 	@endif
 
 	<section class="content-header">
@@ -39,17 +39,14 @@
 						</li>
 
 						<li class="list-group-item">
-							<b>Role</b> 
+							<b>Role</b>
 							<a class="pull-right">
-								@if ( $user->role == 103 ) Super-administrator 
-								@elseif( $user->role == 102 ) Administrator
-								@elseif( $user->role == 101 ) Seller or Moderator
-								@elseif( $user->role == 100 ) Users @endif
-							</a>						 
+                                {{$user->rol->name }}
+							</a>
 						</li>
-						
+
 						<li class="list-group-item">
-							<b>Creation date</b> <a class="pull-right">{{ $user->created_at->format('M d, Y, G:i:s') }}</a>						 
+							<b>Creation date</b> <a class="pull-right">{{ $user->created_at->format('M d, Y, G:i:s') }}</a>
 						</li>
 					</ul>
 					@if( checkrights('PUE', auth()->user()->permissions) )
@@ -59,17 +56,17 @@
 					@endif
 				</div>
           	</div>
-		</div>		
-		
+		</div>
+
 		<div class="col-md-8">
 
 			<div class="box box-primary">
-		    	<div class="box-body">					
+		    	<div class="box-body">
 					<div class="active tab-pane" id="activity">
 					  <!-- Post -->
 					  <div class="post">
 						<div class="user-block">
-							 
+
 							@if ( $user->avatar != null )
 								<img src="/images/{{ $user->avatar }}" class="img-circle img-bordered-sm"  alt="{{ $user->name }}">
 							@else
@@ -78,40 +75,40 @@
 
 							<span class="username">
 								<a >Permissions</a>
-								
+
 								<!-- <a href="#" class="pull-right btn-box-tool">
 									<i class="fa fa-times"></i>-->
-								</a> 
+								</a>
 							</span>
 
 							<span class="description">
 								Date updated - {{ $user->updated_at->format('M d, Y, G:i:s') }}
-							</span> 							
+							</span>
 						</div>
-						
+
 						<p>
 							<div class="row">
 								<div class="col-md-3">
 								  <div class="box box-solid">
 									<div class="box-header with-border">
-									  <h3 class="box-title">List Users</h3>
+									  List Users
 									</div>
 									<!-- /.box-header -->
 									<div class="box-body">
-										<p> 
+										<p>
 											{!! checkrights('PUV', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
 											 : '<i class="fa fa-times margin-r-5"></i>' !!}View User<br>
-										  	
+
 											{!! checkrights('PUE', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
 											 : '<i class="fa fa-times margin-r-5"></i>' !!}Edit User<br>
-											
+
 											{!! checkrights('PUD', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
 											 : '<i class="fa fa-times margin-r-5">' !!}</i>Delete User<br>
 										</p>
-									 
+
 										{{--  <input type="checkbox" name="encargado" class="minimal flat-red" disabled value="1" checked>
 										&nbsp;<i class="fa fa-street-view margin-r-5"></i>View User &nbsp;<br>  --}}
-									  
+
 									</div>
 								  </div>
 								</div>
@@ -119,15 +116,20 @@
 								<div class="col-md-3">
 									<div class="box box-solid">
 									  <div class="box-header with-border">
-										<h3 class="box-title">List Users</h3>
+										Role and Permissions
 									  </div>
 									  <!-- /.box-header -->
 									  <div class="box-body">
-										  <p>
-												<i class="fa fa-check margin-r-5"></i>View User<br>
-												<i class="fa fa-times margin-r-5"></i>Edit User<br>
-											  <i class="fa fa-times margin-r-5"></i>Delete User <br> 
-										  </p>	
+                                          <p>
+                                              {!! checkrights('PRV', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
+                                               : '<i class="fa fa-times margin-r-5"></i>' !!}View Role<br>
+
+                                              {!! checkrights('PRE', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
+                                               : '<i class="fa fa-times margin-r-5"></i>' !!}Edit Role<br>
+
+                                              {!! checkrights('PRD', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
+                                               : '<i class="fa fa-times margin-r-5">' !!}</i>Delete Role<br>
+                                          </p>
 									  </div>
 									</div>
 								  </div>
@@ -139,11 +141,11 @@
 									</div>
 									<!-- /.box-header -->
 									<div class="box-body">
-										<p>											
+										<p>
 										  	<i class="fa fa-check margin-r-5"></i>View User<br>
 										  	<i class="fa fa-times margin-r-5"></i>Edit User<br>
-											<i class="fa fa-times margin-r-5"></i>Delete User <br> 
-										</p>  
+											<i class="fa fa-times margin-r-5"></i>Delete User <br>
+										</p>
 									</div>
 								  </div>
 								</div>
@@ -158,8 +160,8 @@
 										  <p>
 												<i class="fa fa-check margin-r-5"></i>View User<br>
 												<i class="fa fa-times margin-r-5"></i>Edit User<br>
-											  	<i class="fa fa-times margin-r-5"></i>Delete User <br> 
-										  </p>	
+											  	<i class="fa fa-times margin-r-5"></i>Delete User <br>
+										  </p>
 									  </div>
 									</div>
 								  </div>
@@ -175,7 +177,7 @@
 						</ul>-->
 					  </div>
 					</div>
-	
+
 					<!-- /.tab-pane -->
 				  </div>
 				  <!-- /.tab-content -->

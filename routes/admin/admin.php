@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', 'AdminController@index')->name('admin');
     //USER
     Route::resource('users', 'UsersController', ['as' => 'admin']);
+    //ROLE
+    Route::resource('roles', 'RolesController', ['as' => 'admin']);
 
 
 

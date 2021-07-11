@@ -14,7 +14,7 @@
 @section('content')
 	<div class="row">
 		<form method="POST" enctype="multipart/form-data" action="{{ route('admin.users.store') }}">
-			@csrf 
+			@csrf
 		<div class="col-md-8">
 			<div class="box box-primary">
 		    	<div class="box-body">
@@ -23,25 +23,25 @@
 		    			<input name='name' placeholder="Name User" class="form-control" value="{{ old('name') }}">
 		    			{!! $errors->first('name', '<span class="help-block">:message</span>') !!}
 		    		</div>
-				
+
 		    		<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
 		    			<label for="password">Password</label>
 						<input type='password' name='password' id="password" class="form-control">
 						{!! $errors->first('password', '<span class="help-block">:message</span>') !!}
 		    		</div>
-				
+
 		    		<div class="form-group">
 		    			<label for="password_confirmation">Repeat Password</label>
 						<input type='password' name='password_confirmation' id="password_confirmation" class="form-control">
 		    		</div>
-				
+
 	    			<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
 	    				<label>Phone</label>
 	    				<input name='phone' placeholder="User's Phone" class="form-control" value="{{ old('phone') }}">
 	    				{!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
 	    			</div>
 				</div>
-				
+
 	    	</div>
    		</div>
 
@@ -54,20 +54,19 @@
 						<label>Role</label>
 						<select name='role' class="form-control">
 							<option value="">Select a role</option>
-							<option value="103" {{ old('role') == 103 ? 'selected' : ''}}>Super-administrator</option>
-							<option value="102" {{ old('role') == 102 ? 'selected' : ''}}>Administrator</option>
-							<option value="101" {{ old('role') == 101 ? 'selected' : ''}}>Seller or Moderator</option>
-							<option value="100" {{ old('role') == 100 ? 'selected' : ''}}>Users</option>
+                            @foreach($roles as $role)
+                                <option value="{{$role->id}}" {{ old('role') == $role->id  ? 'selected' : ''}}>{{$role->name}}</option>
+                            @endforeach
 						</select>
 						{!! $errors->first('role', '<span class="help-block">:message</span>') !!}
 					</div>
-				
+
 	    			<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 	    				<label>E-Mail</label>
 	    				<input name='email' placeholder="User E-mail" class="form-control" value="{{ old('email') }}">
 	    				{!! $errors->first('email', '<span class="help-block">:message</span>') !!}
 	    			</div>
-				
+
 	    			<div class="form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
 	    				<label>Avatar</label>
 	    				<input type="file" name="avatar" id="avatar">
