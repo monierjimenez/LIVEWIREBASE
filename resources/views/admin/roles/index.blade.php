@@ -14,7 +14,7 @@
   <div class="box box-primary">
     <div class="box-header">
       <h3 class="box-title">List the roles</h3>
-      @if( checkrights('PRV', auth()->user()->permissions) )
+      @if( checkrights('PRE', auth()->user()->permissions) )
         <a href="{{ route('admin.roles.create') }}" class="btn btn-primary pull-right">
           <i class="fa fa-plus"></i> Create Role
         </a>
@@ -45,11 +45,11 @@
                       <a href="{{ route('admin.roles.show', $role) }}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
                 @endif
 
-                @if( checkrights('PUE', auth()->user()->permissions) )
+                @if( checkrights('PRE', auth()->user()->permissions) )
                     <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
                 @endif
 
-                @if( checkrights('PUE', auth()->user()->permissions) )
+                @if( checkrights('PRD', auth()->user()->permissions) )
                     <form method="POST" action="{{ route('admin.roles.destroy', $role) }}" style="display: inline">
                         @csrf {{ method_field('DELETE') }}
                         <button class="btn btn-xs btn-danger" onclick="return confirm('Are you sure to delete this role?')">

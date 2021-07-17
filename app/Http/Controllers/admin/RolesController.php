@@ -22,7 +22,7 @@ class RolesController extends Controller
 
     public function create()
     {
-        if ( !in_array('PUE', explode(".", auth()->user()->permissions)) )
+        if ( !in_array('PRE', explode(".", auth()->user()->permissions)) )
             return redirect()->route('admin')->with('flasherror', 'Permissions denied to perform this operation, contact the administrator.');
         return view('admin.roles.create');
     }

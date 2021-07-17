@@ -110,20 +110,21 @@ class UsersController extends Controller
             'phone' => 'required|numeric',
             'role' => 'required',
         ];
-        $data = $request->validate($rules);
+
         if ( $request->role != $user->role ) {
             $rol = Role::find($request->role);
             $user->permissions = $rol->permissions;
         }else {
             $user->permissions = updaterights($request->permissions);
+            $user->save();
         }
-        $user->save();
+
         //Artisan::call('cache:clear');
         if( $request->filled('password'))
         {
             $rules['password'] = ['confirmed', 'min:5'];
         }
-
+        //return $request;
         if( $request->hasFile('avatar') )
 		 {
 			if ( $user->avatar != '' && $user->avatar != 'unnamed.jpg'){
@@ -136,6 +137,7 @@ class UsersController extends Controller
             $user->avatar = 'avatar/'.$nombrearchivo;
             $user->save();
 		 }
+        $data = $request->validate($rules);
 
         $user->update($data) ;
         $user->password = bcrypt($request->password);
