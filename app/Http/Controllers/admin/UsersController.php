@@ -61,6 +61,7 @@ class UsersController extends Controller
 
         $user->permissions = $rol->permissions ;
         $user->save();
+        generaRecords('User created', 'User has been created successfully, for '. auth()->user()->name .'.');
         return redirect()->route('admin.users.index')->with('flash', 'User has been created successfully.');
     }
 
@@ -155,6 +156,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        generaRecords('User removed', 'User has been successfully removed, for '. auth()->user()->name .'.');
         return redirect()->route('admin.users.index')->with('flash', 'User has been successfully removed.');
     }
 }

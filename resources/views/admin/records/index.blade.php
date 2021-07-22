@@ -46,12 +46,13 @@
 	<script>
 		$(function () {
 			$('#post-table85').DataTable({
+                "order": [[ 3, "desc" ]],
 				"processing": true,
 				"serverSide": true,
 				"ajax": "{{ url('admin/record/generales') }}",
 				"columns":[
 				  {data: 'accion', name: 'accion'},
-                  {data: 'user.name', name: 'user.name'},  //, orderable: false   searchable: false
+                  {data: 'user.name', name: 'user.name'},
                   {data: 'descripcion', name: 'descripcion'},
                   {
                     name: 'updated_at',

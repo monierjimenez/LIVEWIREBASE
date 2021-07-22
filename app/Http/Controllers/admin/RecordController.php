@@ -22,10 +22,10 @@ class RecordController extends Controller
     public function recordGeneral()
     {
         return Datatables()->of(Record::with("user")
-            ->orderBy('created_at', 'asc'))
+           )
             ->editColumn('updated_at', function ($record) {
                 return [
-                    'display' => $record->updated_at->format('Y-m-d, G:i:s '), //, G:i:s
+                    'display' => $record->updated_at->format('Y-m-d, G:i:s'), //, G:i:s
                     'timestamp' => $record->updated_at->timestamp
                 ];
             })
