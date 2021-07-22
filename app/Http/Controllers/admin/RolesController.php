@@ -34,6 +34,7 @@ class RolesController extends Controller
             'url' => Str::slug($request->name),
             'permissions' => updaterights($request->permissions),
         ]);
+        generaRecords('Role created', 'Role has been created successfully, for '. auth()->user()->name .'.');
         return redirect()->route('admin.roles.index')->with('flash', 'Role has been created successfully.');
     }
 
@@ -63,6 +64,7 @@ class RolesController extends Controller
 
         $data = $request->validate($rules);
         $role->update($data) ;
+        generaRecords('Role updated', 'Role successfully updated, for '. auth()->user()->name .'.');
         return back()->with('flash', 'Role successfully updated.');
     }
 

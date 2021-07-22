@@ -33,27 +33,28 @@
     </li>
   @endif
 
-  <li class="treeview {{ request()->is('admin/records*') ? 'active' : '' }}">
-      <a href=""><i class="fa fa-book"></i> <span>RECORD AND REPORTS</span>
-          <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-          </span>
-      </a>
-      <ul class="treeview-menu">
-          <li class="{{ request()->is('admin/records-users') ? 'active' : '' }}">
-              <a href="{{ route('admin.records') }}">Record users</a>
-          </li>
+  @if( checkrights('PRRV', auth()->user()->permissions) )
+      <li class="treeview {{ request()->is('admin/records*') ? 'active' : '' }}">
+          <a href=""><i class="fa fa-book"></i> <span>RECORD AND REPORTS</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+              <li class="{{ request()->is('admin/records-users') ? 'active' : '' }}">
+                  <a href="{{ route('admin.records') }}">Record users</a>
+              </li>
 
-          <div class="container">
-              <!-- <button type="button" class="btn btn-default btn-sm">Cadastrar Monitorias</button> -->
-          </div>
-          <!--Teste modal-->
+              <div class="container">
+                  <!-- <button type="button" class="btn btn-default btn-sm">Cadastrar Monitorias</button> -->
+              </div>
+              <!--Teste modal-->
 
-          <!--Teste modal
-          <li><a href="#">Meus Ratings</a></li>-->
-      </ul>
-  </li>
-
+              <!--Teste modal
+              <li><a href="#">Meus Ratings</a></li>-->
+          </ul>
+      </li>
+  @endif
   {{--  <li>
       <a href="#"><i class="fa fa-close"></i> <span>SAIR</span></a>
   </li>  --}}
