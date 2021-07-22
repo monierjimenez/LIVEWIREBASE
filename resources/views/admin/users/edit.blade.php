@@ -22,7 +22,7 @@
 	<div class="row">
 	<form method="POST" enctype="multipart/form-data" action="{{ route('admin.users.update', $user) }}">
 			@csrf  {{ method_field('PUT') }}
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="box box-primary">
 		    	<div class="box-body">
 		    		<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -90,97 +90,168 @@
     		</div>
     	</div>
 
-
-		<div class="col-md-5">
+		<div class="col-md-6">
     		<div class="box box-primary">
-				<p>
-					<div class="row">
-						<div class="col-md-4">
-						  	<div class="box box-solid">
-								<div class="box-header with-border">
-									Permissions Users
-								</div>
+                <div class="box-body">
+                    <p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        Permissions Users
+                                    </div>
 
-								<div class="box-body">
-									<p>
-										{!! checkrights('PUV', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" > ' !!}View User<br>
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PUV', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUV" > ' !!}View User<br>
 
-										{!! checkrights('PUE', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" > ' !!}Edit User<br>
+                                            {!! checkrights('PUE', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUE" > ' !!}Edit User<br>
 
-										{!! checkrights('PUD', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" > ' !!}Delete User
-									</p>
-								</div>
-						  	</div>
-						</div>
+                                            {!! checkrights('PUD', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PUD" > ' !!}Delete User
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-						<div class="col-md-4">
-							<div class="box box-solid">
-								<div class="box-header with-border">
-                                    Permissions Roles
-								</div>
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        Permissions Roles
+                                    </div>
 
-								<div class="box-body">
-									<p>
-                                        {!! checkrights('PRV', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" > ' !!}View Role<br>
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PRV', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRV" > ' !!}View Role<br>
 
-                                        {!! checkrights('PRE', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" > ' !!}Edit Role<br>
+                                            {!! checkrights('PRE', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRE" > ' !!}Edit Role<br>
 
-                                        {!! checkrights('PRD', $user->permissions) ?
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" checked> '
-											 :
-										'<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" > ' !!}Delete Role
-									</p>
-								</div>
-							</div>
-						</div>
+                                            {!! checkrights('PRD', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRD" > ' !!}Delete Role
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-						<div class="col-md-4">
-						  	<div class="box box-solid">
-								<div class="box-header with-border">
-									<h3 class="box-title">List Users</h3>
-								</div>
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        List Recors
+                                    </div>
 
-								<div class="box-body">
-									<p>
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										View User<br>
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PRRV', $user->permissions) ?
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRRV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRRV" > ' !!}View Record<br>
 
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										Edit User<br>
-
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										Delete User
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-				{{--  @if ( auth()->user()->role == 103 || auth()->user()->role == 102 )  --}}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        Permissions Users
+                                    </div>
+
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PUV', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUV" > ' !!}View User<br>
+
+                                            {!! checkrights('PUE', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUE" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUE" > ' !!}Edit User<br>
+
+                                            {!! checkrights('PUD', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUD" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PUD" > ' !!}Delete User
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        Permissions Roles
+                                    </div>
+
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PRV', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRV" > ' !!}View Role<br>
+
+                                            {!! checkrights('PRE', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRE" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRE" > ' !!}Edit Role<br>
+
+                                            {!! checkrights('PRD', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRD" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRD" > ' !!}Delete Role
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        List Recors
+                                    </div>
+
+                                    <div class="box-body">
+                                        <p>
+                                            {!! checkrights('PRRV', $user->permissions) ?
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRRV" checked> '
+                                                 :
+                                            '<input type="checkbox" name="" class="minimal flat-red" value="PRRV" > ' !!}View Record<br>
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+				    {{--  @if ( auth()->user()->role == 103 || auth()->user()->role == 102 )  --}}
 					<div class="box-body">
 						<div class="form-group">
 							<button type="submit" class='btn btn-primary btn-block'>Update User</button>
 						</div>
 					</div>
-				{{--  @endif  --}}
-    		</div>
+				    {{--  @endif  --}}
+    		    </div>
+            </div>
     	</div>
     </form>
 	</div>

@@ -1,9 +1,9 @@
 <?php
 
 use App\User;
+use App\Record;
 
 // use SimpleSoftwareIO\QrCode\Facade as QrCode;
-
     // funcion para chequear si el un usuario tiene
     // permisos para acceder a determinado lugar.
     function checkrights($permissions, $allpermissions) {
@@ -38,6 +38,15 @@ function checkrightscant($allpermissions) {
             }
         }
         return $pp ;
+    }
+    //funcion que guarda record en la BD
+    function generaRecords($accion, $descripcion)
+    {
+        $reporte = Record::create([
+            'accion' => $accion,
+            'descripcion' => $descripcion,
+            'user_id' => auth()->user()->id,
+        ]);
     }
 
 

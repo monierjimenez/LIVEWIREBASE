@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
+    //movimientos
+    Route::get('records-users', 'RecordController@index')->name('admin.records');
+    //rutas datatables ajax
+    Route::get('record/generales', 'RecordController@recordGeneral');
+
 
 
 //Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'middleware' => 'auth'],  function(){

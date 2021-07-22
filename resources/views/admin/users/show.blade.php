@@ -137,14 +137,13 @@
 								<div class="col-md-3">
 								  <div class="box box-solid">
 									<div class="box-header with-border">
-									  <h3 class="box-title">List Users</h3>
+									  List Records
 									</div>
 									<!-- /.box-header -->
 									<div class="box-body">
 										<p>
-										  	<i class="fa fa-check margin-r-5"></i>View User<br>
-										  	<i class="fa fa-times margin-r-5"></i>Edit User<br>
-											<i class="fa fa-times margin-r-5"></i>Delete User <br>
+                                            {!! checkrights('PRRV', $user->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
+                                             : '<i class="fa fa-times margin-r-5"></i>' !!}View Record<br>
 										</p>
 									</div>
 								  </div>

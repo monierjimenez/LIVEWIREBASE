@@ -141,6 +141,8 @@ class UsersController extends Controller
 
         $user->update($data) ;
         $user->password = bcrypt($request->password);
+
+        generaRecords('User updated', 'User updated successfully, for '. auth()->user()->name .'.');
         return back()->with('flash', 'User has been updated successfully.');
     }
 

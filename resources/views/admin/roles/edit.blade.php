@@ -101,20 +101,16 @@
 						<div class="col-md-3">
 						  	<div class="box box-solid">
 								<div class="box-header with-border">
-                                    Permissions ???
+                                    Permissions Record
 								</div>
 
 								<div class="box-body">
 									<p>
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										View User<br>
-
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										Edit User<br>
-
-										<input type="checkbox" name="encargado" class="minimal flat-red" value="1" >
-										Delete User
-									</p>
+                                        {!! checkrights('PRRV', $role->permissions) ?
+                                        '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRRV" checked> '
+                                             :
+                                        '<input type="checkbox" name="permissions[]" class="minimal flat-red" value="PRRV" > ' !!}View Record<br>
+                                    </p>
 								</div>
 							</div>
 						</div>

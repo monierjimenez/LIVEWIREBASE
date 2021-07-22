@@ -108,14 +108,13 @@
 								<div class="col-md-3">
 								  <div class="box box-solid">
 									<div class="box-header with-border">
-                                        Permissions ???
+                                        Permissions Record
 									</div>
 									<!-- /.box-header -->
 									<div class="box-body">
 										<p>
-										  	<i class="fa fa-check margin-r-5"></i>View User<br>
-										  	<i class="fa fa-times margin-r-5"></i>Edit User<br>
-											<i class="fa fa-times margin-r-5"></i>Delete User <br>
+                                            {!! checkrights('PRRV', $role->permissions) ? '<i class="fa fa-check margin-r-5"></i>'
+                                           : '<i class="fa fa-times margin-r-5"></i>' !!} View Record<br>
 										</p>
 									</div>
 								  </div>
