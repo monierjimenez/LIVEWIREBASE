@@ -30,6 +30,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
     @livewireStyles
+    @notifyCss
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -202,24 +203,24 @@ desired effect
 
                                     <p>
                                         {{ auth()->user()->name }} <br> Web Developer
-                                        <small>Miembro desde {{ auth()->user()->created_at }}</small>
+                                        <small>Miembro desde {{ auth()->user()->created_at->format('Y-m-d, G:i:s') }}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Seguidores</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Amigos</a>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </li>
+{{--                                <li class="user-body">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-xs-4 text-center">--}}
+{{--                                            <a href="#">Seguidores</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-xs-4 text-center">--}}
+{{--                                            <a href="#">Sales</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-xs-4 text-center">--}}
+{{--                                            <a href="#">Amigos</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- /.row -->--}}
+{{--                                </li>--}}
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
@@ -239,9 +240,9 @@ desired effect
                             </ul>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </nav>
@@ -336,77 +337,77 @@ desired effect
         </footer>
 
         <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Create the tabs -->
-            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <!-- Home tab content -->
-                <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Atividades Recentes</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+{{--        <aside class="control-sidebar control-sidebar-dark">--}}
+{{--            <!-- Create the tabs -->--}}
+{{--            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">--}}
+{{--                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>--}}
+{{--                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>--}}
+{{--            </ul>--}}
+{{--            <!-- Tab panes -->--}}
+{{--            <div class="tab-content">--}}
+{{--                <!-- Home tab content -->--}}
+{{--                <div class="tab-pane active" id="control-sidebar-home-tab">--}}
+{{--                    <h3 class="control-sidebar-heading">Atividades Recentes</h3>--}}
+{{--                    <ul class="control-sidebar-menu">--}}
+{{--                        <li>--}}
+{{--                            <a href="javascript:;">--}}
+{{--                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>--}}
 
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Anversário de Andrei</h4>
+{{--                                <div class="menu-info">--}}
+{{--                                    <h4 class="control-sidebar-subheading">Anversário de Andrei</h4>--}}
 
-                                    <p>Próximo dia 24 de junho</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
+{{--                                    <p>Próximo dia 24 de junho</p>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    <!-- /.control-sidebar-menu -->--}}
 
-                    <h3 class="control-sidebar-heading">Barra de Progresso</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <h4 class="control-sidebar-subheading">
-                                    Total de ratings para próxima Hora complementar
-                                    <span class="pull-right-container">
-                                    <span class="label label-danger pull-right">70%</span>
-                                    </span>
-                                </h4>
+{{--                    <h3 class="control-sidebar-heading">Barra de Progresso</h3>--}}
+{{--                    <ul class="control-sidebar-menu">--}}
+{{--                        <li>--}}
+{{--                            <a href="javascript:;">--}}
+{{--                                <h4 class="control-sidebar-subheading">--}}
+{{--                                    Total de ratings para próxima Hora complementar--}}
+{{--                                    <span class="pull-right-container">--}}
+{{--                                    <span class="label label-danger pull-right">70%</span>--}}
+{{--                                    </span>--}}
+{{--                                </h4>--}}
 
-                                <div class="progress progress-xxs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
+{{--                                <div class="progress progress-xxs">--}}
+{{--                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    <!-- /.control-sidebar-menu -->--}}
 
-                </div>
-                <!-- /.tab-pane -->
-                <!-- Stats tab content -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                <!-- /.tab-pane -->
-                <!-- Settings tab content -->
-                <div class="tab-pane" id="control-sidebar-settings-tab">
-                    <form method="post">
-                        <h3 class="control-sidebar-heading">Configurações Gerais</h3>
+{{--                </div>--}}
+{{--                <!-- /.tab-pane -->--}}
+{{--                <!-- Stats tab content -->--}}
+{{--                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>--}}
+{{--                <!-- /.tab-pane -->--}}
+{{--                <!-- Settings tab content -->--}}
+{{--                <div class="tab-pane" id="control-sidebar-settings-tab">--}}
+{{--                    <form method="post">--}}
+{{--                        <h3 class="control-sidebar-heading">Configurações Gerais</h3>--}}
 
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-              Painel de Relatórios
-              <input type="checkbox" class="pull-right" checked>
-            </label>
+{{--                        <div class="form-group">--}}
+{{--                            <label class="control-sidebar-subheading">--}}
+{{--              Painel de Relatórios--}}
+{{--              <input type="checkbox" class="pull-right" checked>--}}
+{{--            </label>--}}
 
-                            <p>
-                                Informações sobre as configurações gerais.
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
-            </div>
-        </aside>
+{{--                            <p>--}}
+{{--                                Informações sobre as configurações gerais.--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <!-- /.form-group -->--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--                <!-- /.tab-pane -->--}}
+{{--            </div>--}}
+{{--        </aside>--}}
         <!-- /.control-sidebar -->
         <!-- Add the sidebars background. This div must be placed
        immediately after the control sidebar -->
@@ -471,6 +472,8 @@ desired effect
 {{--            toastr.error("An error has occurred, check the delivered data");--}}
 {{--        </script>--}}
 {{--    @endif--}}
+    <x:notify-messages />
+    @notifyJs
     @livewireScripts
 </body>
 

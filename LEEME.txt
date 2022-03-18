@@ -10,6 +10,37 @@ Para compilar nuestro css y nuestro js en uno solo
 Para compilar el kernel, para cuando se pone helpers
 	composer dump-autoload
 
+
+
+TABLA PRODUCTOS
+name
+imagenes
+precio_costo
+precio_venta_antes
+precio_venta
+precio_envio
+peso_bulto
+color
+stock
+descriptio
+marca
+modelo
+caracteristicas
+pago_cuba
+sku
+
+TABLA ORDENES
+id
+id_orden
+id_producto
+
+
+
+
+
+
+
+
 8502Rmonier.
 
 ya esta intalado:

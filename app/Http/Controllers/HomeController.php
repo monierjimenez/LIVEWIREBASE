@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        notify()->success('Welcome to Laravel Notify ⚡️');
         return view('home');
     }
 

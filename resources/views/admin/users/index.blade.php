@@ -44,7 +44,10 @@
               <td> {{ $user->name }} </td>
               <td>{{ $user->email }}</td>
               <td>{{ $user->phone }}</td>
-              <td style="text-align: center">{{ $user->rol->name }}</td>
+              <td style="text-align: center">
+{{--                  {{ dd($user->rol->name) }}--}}
+                  {{ returnRole($user->role) }}
+              </td>
               <td>
                 <div class="user-block">
                     @if ( $user->avatar != null )

@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use  App\Role;
 use App\Record;
 
 // use SimpleSoftwareIO\QrCode\Facade as QrCode;
@@ -47,6 +48,16 @@ function checkrightscant($allpermissions) {
             'descripcion' => $descripcion,
             'user_id' => auth()->user()->id,
         ]);
+    }
+
+    //funtion devueklve el rol
+    function returnRole ($id)
+    {
+       $role = Role::select(['name'])->where('id', $id)->get();
+       foreach ($role as $rol){
+           return $rol->name;
+       }
+       //return $role;
     }
 
 

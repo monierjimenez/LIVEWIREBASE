@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @notifyCss
     @livewireStyles
 </head>
 <body>
@@ -82,6 +83,8 @@
             @yield('content')
         </main>
     </div>
+    <x:notify-messages />
+    @notifyJs
     @livewireScripts
 </body>
 </html>

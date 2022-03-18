@@ -2,7 +2,7 @@
 
 @section('header')
 
-	@if( !checkrights('PUE', auth()->user()->permissions) )
+	@if( !checkrights('PRE', auth()->user()->permissions) )
 		<script type="text/javascript">
 			window.location="/admin/users";
 		</script>
