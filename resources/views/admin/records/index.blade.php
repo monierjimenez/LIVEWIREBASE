@@ -20,7 +20,7 @@
 							<thead>
 								<tr>
 									<th>Accion</th>
-                                    <th>User</th>
+{{--                                    <th>User</th>--}}
 									<th>Descripcion</th>
                                     <th>Date</th>
 								</tr>
@@ -46,13 +46,13 @@
 	<script>
 		$(function () {
 			$('#post-table85').DataTable({
-                "order": [[ 3, "desc" ]],
+                "order": [[ 2, "desc" ]],
 				"processing": true,
 				"serverSide": true,
 				"ajax": "{{ url('admin/record/generales') }}",
 				"columns":[
 				  {data: 'accion', name: 'accion'},
-                  {data: 'user.name', name: 'user.name'},
+                  // {data: 'user.name', name: 'user.name'},
                   {data: 'descripcion', name: 'descripcion'},
                   {
                     name: 'updated_at',

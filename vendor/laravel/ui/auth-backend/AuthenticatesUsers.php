@@ -44,6 +44,7 @@ trait AuthenticatesUsers
         }
 
         if ($this->attemptLogin($request)) {
+            generaRecords('Login successfully', 'Login successfully user '. auth()->user()->name .'.');
             return $this->sendLoginResponse($request);
         }
 
@@ -51,7 +52,7 @@ trait AuthenticatesUsers
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
-
+        generaRecords('Login unsuccessful', 'Login unsuccessful user, with mail: '. $request->email .'.');
         return $this->sendFailedLoginResponse($request);
     }
 

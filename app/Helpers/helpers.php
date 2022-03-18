@@ -46,7 +46,7 @@ function checkrightscant($allpermissions) {
         $reporte = Record::create([
             'accion' => $accion,
             'descripcion' => $descripcion,
-            'user_id' => auth()->user()->id,
+//            'user_id' => auth()->user()->id,
         ]);
     }
 

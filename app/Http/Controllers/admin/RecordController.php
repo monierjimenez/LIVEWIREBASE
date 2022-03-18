@@ -21,8 +21,7 @@ class RecordController extends Controller
     //function me da todos los records ordenanos por fechas de creado
     public function recordGeneral()
     {
-        return Datatables()->of(Record::with("user")
-           )
+        return Datatables()->of(Record::with("user"))
             ->editColumn('updated_at', function ($record) {
                 return [
                     'display' => $record->updated_at->format('Y-m-d, G:i:s'), //, G:i:s
